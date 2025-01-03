@@ -16,6 +16,7 @@
       var bx = 200;
       var by = 200;
       var bv = -1;
+      let inzone = 0;
       
       function go() {
           ctx.clearRect(0, 0, c.width, c.height);
@@ -32,9 +33,13 @@
           ctx.arc(bx, by, 3, 0, 2 * Math.PI);
           ctx.stroke();
           
-        if (by >= 350) {
+        if (by >= 350 && inzone == 0) {
+          inzone = 1;
           bv = 0 - bv;
           bv -= 0.9
+        } else {
+          inzone = 0;
+          
         }
       }
       
