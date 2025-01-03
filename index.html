@@ -31,6 +31,9 @@
           ctx.beginPath();
           ctx.arc(bx, by, 3, 0, 2 * Math.PI);
           ctx.stroke();
+        if (by <= 400) {
+          bv = 0 - bv;
+        }
       }
       
       setInterval(() => {
