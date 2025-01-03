@@ -18,7 +18,7 @@
       var bv = 0;
       
       
-      function draw(){
+      
           ctx.clearRect(0, 0, c.width, c.height);
           ctx.beginPath();
           ctx.rect(0,0,400,400);
@@ -31,11 +31,22 @@
           ctx.beginPath();
           ctx.arc(95, 50, 3, 0, 2 * Math.PI);
           ctx.stroke();
-          setTimeout(function() {
-          }, 150);
-      }
       
-      setTimeout(draw();, 100)
+      setTimeout(() => {
+          ctx.clearRect(0, 0, c.width, c.height);
+          ctx.beginPath();
+          ctx.rect(0,0,400,400);
+          ctx.stroke();
+          bv -= 3;
+          if(by <= 3) {
+            bv = -bv;
+          }
+          by += bv;
+          ctx.beginPath();
+          ctx.arc(95, 50, 3, 0, 2 * Math.PI);
+          ctx.stroke();
+      }, "100");
+      
     </script>
   </body>
 </html>
