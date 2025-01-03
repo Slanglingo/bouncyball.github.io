@@ -23,9 +23,9 @@
           ctx.beginPath();
           ctx.rect(0,0,400,400);
           ctx.stroke();
-          
-          bv -= 0.25;
-          
+          if (inzone == 0) {
+            bv -= 0.25;
+          }
             
           
           by -= bv;
