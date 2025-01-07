@@ -26,7 +26,7 @@
           if (inzone == 0) {
             bv -= 0.25;
           }
-          if (bv <= 0.5 && bv >= -0.5 && by >= 400) {
+          if (bv <= 0.5 && bv >= -0.5 && by >= 390) {
             bv = 0;
           }
           
@@ -35,7 +35,7 @@
           ctx.arc(bx, by, 3, 0, 2 * Math.PI);
           ctx.stroke();
           
-        if (by >= 400 && inzone == 0) {
+        if (by >= 390 && inzone == 0) {
           inzone = 1;
           if (bv !== 0) {
           bv = 0 - bv;
