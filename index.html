@@ -9,7 +9,14 @@
   </head>
   <body>
     <canvas id="Canvas" width="400" height="400"></canvas>
+    <h3>gravity: <span id=gravitynum></span></h3>
+    <input type="range" min="1" max="10" value="50" class="slider" id=Gravity">
     <script>
+      document.onkeypress =  CheckKeyPress;
+      function CheckKeyPress(e){
+        var key = (typeof e.which == "number") ? e.which : e.keyCode
+      }
+      
       var c = document.getElementById("Canvas");
       var ctx = c.getContext("2d");
       var bmom = 0;
@@ -17,14 +24,20 @@
       var by = 200;
       var bv = -1;
       let inzone = 0;
+      let gravity = 5;
       
       function go() {
+          let gravslider = document.getElementById("Gravity");
+          gravslider.oninput = function() {
+              gravity = this.value;
+              document.getElementById("gravitynum").innerHTML = gravity;
+          }
           ctx.clearRect(0, 0, c.width, c.height);
           ctx.beginPath();
           ctx.rect(0,0,400,400);
           ctx.stroke();
           if (inzone == 0) {
-            bv -= 0.25;
+            bv -= 0.05 * gravity;
           }
           if (bv <= 0.5 && bv >= -0.5 && by >= 395) {
             bv = 0;
@@ -39,7 +52,7 @@
           inzone = 1;
           if (bv !== 0) {
           bv = 0 - bv;
-          bv -= 0.9
+          bv -= 0.01 * gravity;
           }
           
         } else {
