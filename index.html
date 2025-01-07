@@ -26,7 +26,9 @@
           if (inzone == 0) {
             bv -= 0.25;
           }
-            
+          if (bv <= 4 && bv >= -4 && by >= 350) {
+            bv = 0;
+          }
           
           by -= bv;
           ctx.beginPath();
@@ -35,15 +37,16 @@
           
         if (by >= 350 && inzone == 0) {
           inzone = 1;
+          if (bv !== 0) {
           bv = 0 - bv;
           bv -= 0.9
+          }
+          
         } else {
           inzone = 0;
           
         }
-        if (by >= 450) {
-          bv = 90;
-        }
+        
       }
       
       setInterval(() => {
