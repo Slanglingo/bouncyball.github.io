@@ -39,7 +39,7 @@
           if (inzone == 0) {
             bv -= 0.05 * gravity;
           }
-          if (bv <= 0.5 && bv >= -0.5 && by >= 395) {
+          if (bv <= 0.2 * gravity && bv >= -0.2 * gravity && by >= 395) {
             bv = 0;
             by = 395
           }
