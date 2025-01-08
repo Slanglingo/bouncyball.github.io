@@ -84,6 +84,14 @@
           
         }
       }
+      if (bx >= 395) {
+        bx = 394
+        bvx = 0 - bvx;
+      }
+      if (bx <= 5) {
+        bx = 6
+        bvx = 0 - bvx;
+      }
       
       setInterval(() => {
           go();
