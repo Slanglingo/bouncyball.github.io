@@ -12,7 +12,8 @@
     <h3>gravity: <span id=gravitynum>10</span></h3>
     <input type="range" min="1" max="10" value="50" class="slider" id="Gravity">
     <button onclick="bounce()">bounce!</button>
-    <button onclick="pr()">push right</button>
+    <button onclick="pl()">push left</button>
+     <button onclick="pr()">push right</button>
     <script>
       
       var c = document.getElementById("Canvas");
@@ -28,8 +29,11 @@
       function bounce() {
           bv = 6
       }
-      function pr() {
+      function pl() {
         bvx += 8;
+      }
+      function pr() {
+        bvx -= 8;
       }
       function go() {
           let gravslider = document.getElementById("Gravity");
