@@ -47,7 +47,9 @@
           ctx.beginPath();
           ctx.arc(bx, by, 3, 0, 2 * Math.PI);
           ctx.stroke();
-          
+          if (by >= 395) {
+            by = 395;
+          }
         if (by >= 395 && inzone == 0) {
           inzone = 1;
           if (bv !== 0) {
