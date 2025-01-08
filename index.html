@@ -20,6 +20,7 @@
       var bx = 200;
       var by = 200;
       var bv = -1;
+      var bvx = 0;
       let inzone = 0;
       let inzonet = 0;
       var gravity = 10;
@@ -43,17 +44,24 @@
             bv = 0;
             by = 395
           }
-          
+          bx -= bv;
           by -= bv;
           ctx.beginPath();
           ctx.arc(bx, by, 3, 0, 2 * Math.PI);
           ctx.stroke();
-          
+
+        
         if (by >= 395 && inzone == 0) {
           inzone = 1;
           if (bv !== 0) {
           bv = 0 - bv;
           bv -= 0.5 * gravity;
+            if (bvx > 0) {
+              bvx -= 0.5;
+            }
+            if (bvx < 0) {
+              bvx += 0.5;
+            }
           }
           
         } else {
