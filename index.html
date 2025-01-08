@@ -21,6 +21,7 @@
       var by = 200;
       var bv = -1;
       let inzone = 0;
+      let inzonet = 0;
       var gravity = 10;
       function bounce() {
           bv = 6
@@ -58,7 +59,15 @@
           inzone = 0;
           
         }
-        
+        if (by <= 5 && inzonet == 0) {
+          inzonet = 1;
+          bv = 0 - bv;
+          bv -= 1 * gravity;
+          
+        } else {
+          inzonet = 0;
+          
+        }
       }
       
       setInterval(() => {
