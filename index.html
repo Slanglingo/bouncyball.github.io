@@ -13,7 +13,10 @@
     <input type="range" min="1" max="10" value="50" class="slider" id="Gravity">
     <button onclick="bounce()">bounce!</button>
     <button onclick="pl()">push left</button>
-     <button onclick="pr()">push right</button>
+    <button onclick="pr()">push right</button>
+    <input type="file" id="fileInput" accept=".mp3">
+    <audio id="audio" controls="false"></audio>
+
     <script>
       
       var c = document.getElementById("Canvas");
@@ -25,7 +28,15 @@
       var bvx = 0;
       let inzone = 0;
       let inzonet = 0;
+      let audioadded = 0;
       var gravity = 10;
+      var audio = document.getElementById("audio");
+      const fileInput = document.getElementById("fileInput");
+      fileInput.addEventListener("change", event => {
+        const file = URL.createObjectURL(event.target.files[0]);
+        document.getElementById("audio").src = file;
+        audioadded = 1;
+      });
       function bounce() {
           bv = 6
       }
@@ -66,6 +77,9 @@
 
         
         if (by >= 395 && inzone == 0) {
+          if (audioadded == 1) {
+            audio.play();
+          }
           inzone = 1;
           if (bv !== 0) {
           bv = 0 - bv;
@@ -83,6 +97,9 @@
           
         }
         if (by <= 5 && inzonet == 0) {
+          if (audioadded == 1) {
+            audio.play();
+          }
           inzonet = 1;
           bv = 0 - bv;
         } else {
@@ -90,10 +107,16 @@
           
         }
         if (bx >= 395) {
+          if (audioadded == 1) {
+            audio.play();
+          }
         bx = 390;
         bvx = 0 - bvx;
       }
       if (bx <= 5) {
+        if (audioadded == 1) {
+            audio.play();
+          }
         bx = 10;
         bvx = 0 - bvx;
       }
