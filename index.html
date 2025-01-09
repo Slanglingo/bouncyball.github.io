@@ -78,6 +78,7 @@
         
         if (by >= 395 && inzone == 0) {
           if (audioadded == 1) {
+            audio.pause();
             audio.play();
           }
           inzone = 1;
@@ -98,6 +99,7 @@
         }
         if (by <= 5 && inzonet == 0) {
           if (audioadded == 1) {
+            audio.pause();
             audio.play();
           }
           inzonet = 1;
@@ -108,6 +110,7 @@
         }
         if (bx >= 395) {
           if (audioadded == 1) {
+            audio.pause();
             audio.play();
           }
         bx = 390;
@@ -115,6 +118,7 @@
       }
       if (bx <= 5) {
         if (audioadded == 1) {
+          audio.pause();
             audio.play();
           }
         bx = 10;
