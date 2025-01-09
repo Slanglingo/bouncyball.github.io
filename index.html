@@ -50,7 +50,13 @@
           }
           if (bv <= 0.2 * gravity && bv >= -0.2 * gravity && by >= 395) {
             bv = 0;
-            by = 395
+            by = 395;
+            if (bvx > 0) {
+              bvx -= 0.5;
+            }
+            if (bvx < 0) {
+              bvx += 0.5;
+            }
           }
           bx -= bvx;
           by -= bv;
