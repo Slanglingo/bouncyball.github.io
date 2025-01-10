@@ -71,10 +71,10 @@
             bv = 0;
             by = 395;
             if (bvx > 0) {
-              bvx -= 0.1;
+              bvx -= 0.05 * friction;
             }
             if (bvx < 0) {
-              bvx += 0.1;
+              bvx += 0.05 * friction;
             }
           }
           bx -= bvx;
@@ -94,10 +94,10 @@
           bv = 0 - bv;
           bv -= 0.5 * gravity;
             if (bvx > 0) {
-              bvx -= 0.5;
+              bvx -= 0.1 * friction;
             }
             if (bvx < 0) {
-              bvx += 0.5;
+              bvx += 0.1 * friction;
             }
           }
           
