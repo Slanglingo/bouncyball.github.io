@@ -9,8 +9,10 @@
   </head>
   <body>
     <canvas id="Canvas" width="400" height="400"></canvas>
-    <h3>gravity: <span id=gravitynum>10</span></h3>
-    <input type="range" min="1" max="10" value="50" class="slider" id="Gravity">
+    <h3>gravity: <span id="gravitynum">5</span></h3>
+    <input type="range" min="0" max="10" value="5" class="slider" id="Gravity">
+    <h3>friction: <span id="frictionnum">5</span></h3>
+    <input type="range" min="0" max="10" value="5" class="slider" id="Friction">
     <button onclick="bounce()">bounce!</button>
     <button onclick="pl()">push left</button>
     <button onclick="pr()">push right</button>
@@ -29,7 +31,8 @@
       let inzone = 0;
       let inzonet = 0;
       let audioadded = 0;
-      var gravity = 10;
+      var gravity = 5;
+      var friction = 5;
       var audio = document.getElementById("audio");
       const fileInput = document.getElementById("fileInput");
       fileInput.addEventListener("change", event => {
@@ -51,6 +54,11 @@
           gravslider.oninput = function() {
               gravity = this.value;
               document.getElementById("gravitynum").innerHTML = gravity;
+          }
+        let frictionslider = document.getElementById("Friction");
+          frictionslider.oninput = function() {
+              friction = this.value;
+              document.getElementById("frictionnum").innerHTML = friction;
           }
           ctx.clearRect(0, 0, c.width, c.height);
           ctx.beginPath();
