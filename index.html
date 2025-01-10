@@ -62,8 +62,7 @@
           }
           ctx.clearRect(0, 0, c.width, c.height);
           ctx.beginPath();
-          ctx.rect(0,0,400,400);
-          ctx.stroke();
+          
           if (inzone == 0) {
             bv -= 0.05 * gravity;
           }
@@ -80,7 +79,11 @@
           bx -= bvx;
           by -= bv;
           ctx.beginPath();
+          ctx.fillStyle = "rgb(255,0,0)";
           ctx.arc(bx, by, 3, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.stroke();
+          ctx.rect(0,0,400,400);
           ctx.stroke();
 
         
