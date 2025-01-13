@@ -23,39 +23,56 @@
       
       var c = document.getElementById("Canvas");
       var ctx = c.getContext("2d");
-      var bmom = 0;
+      // the x bosition of the ball
       var bx = 200;
+      // the y position of the ball
       var by = 200;
+      // the ball's y velocity
       var bv = -1;
+      // the ball's x velocity
       var bvx = 0;
+      // is the ball in the zone to bounce it?
       let inzone = 0;
+      // is the ball in the zone to bounce on the top?
       let inzonet = 0;
+      // has the audio been added for a sound effect?
       let audioadded = 0;
+      // the gravity of the ball
       var gravity = 5;
+      // the friction of the ball
       var friction = 5;
-      var size = 10;
+      // the size of the ball
+      var size = 3;
+      // the html element of the audio
       var audio = document.getElementById("audio");
+      // the actual file for the audio
       const fileInput = document.getElementById("fileInput");
+      // check if the audio has been added and change tha variable for it.
       fileInput.addEventListener("change", event => {
         const file = URL.createObjectURL(event.target.files[0]);
         document.getElementById("audio").src = file;
         audioadded = 1;
       });
+      // the function for the "Bounce!" button
       function bounce() {
           bv = 6
       }
+      // the function for the different "push" buttons
       function pl() {
         bvx += 8;
       }
       function pr() {
         bvx -= 8;
       }
-      function go() {
+      // the function to be called every frame
+      function frame() {
+        // checks if the gravity slider has been changed and updates the variable for that
           let gravslider = document.getElementById("Gravity");
           gravslider.oninput = function() {
               gravity = this.value;
               document.getElementById("gravitynum").innerHTML = gravity;
           }
+        // same as gravity slider, except changes the friction
         let frictionslider = document.getElementById("Friction");
           frictionslider.oninput = function() {
               friction = this.value;
@@ -140,7 +157,7 @@
       }
       
       setInterval(() => {
-          go();
+          frame();
       }, "25");
       
     </script>
