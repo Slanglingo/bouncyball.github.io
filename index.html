@@ -33,6 +33,7 @@
       let audioadded = 0;
       var gravity = 5;
       var friction = 5;
+      var size = 10;
       var audio = document.getElementById("audio");
       const fileInput = document.getElementById("fileInput");
       fileInput.addEventListener("change", event => {
@@ -80,7 +81,7 @@
           by -= bv;
           ctx.beginPath();
           ctx.fillStyle = "rgb(0,0,0)";
-          ctx.arc(bx, by, 3, 0, 2 * Math.PI);
+          ctx.arc(bx, by, 3, 0, size * Math.PI);
           ctx.fill();
           ctx.stroke();
           ctx.rect(0,0,400,400);
@@ -92,6 +93,7 @@
             audio.pause();
             audio.play();
           }
+        if (by >= 395 - size && inzone == 0) {
           inzone = 1;
           if (bv !== 0) {
           bv = 0 - bv;
@@ -108,14 +110,14 @@
           inzone = 0;
           
         }
-        if (by <= 5 && inzonet == 0) {
+        if (by <= 5 + size && inzonet == 0) {
           inzonet = 1;
           bv = 0 - bv;
         } else {
           inzonet = 0;
           
         }
-        if (bx >= 395) {
+        if (bx >= 395 - size) {
           if (audioadded == 1) {
             audio.pause();
             audio.play();
@@ -123,7 +125,7 @@
         bx = 390;
         bvx = 0 - bvx;
       }
-      if (bx <= 5) {
+      if (bx <= 5 + size) {
         
         if (audioadded == 1) {
           audio.pause();
