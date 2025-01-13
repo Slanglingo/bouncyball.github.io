@@ -33,12 +33,6 @@
       let audioadded = 0;
       var gravity = 5;
       var friction = 5;
-      let red = 255;
-      let green = 0;
-      let blue = 0;
-      let rup = -10;
-      let gup = 10;
-      let bup = 0;
       var audio = document.getElementById("audio");
       const fileInput = document.getElementById("fileInput");
       fileInput.addEventListener("change", event => {
@@ -93,31 +87,7 @@
           ctx.stroke();
 
         
-        if (by >= 395 && inzone == 0) {
-          red += rup;
-          green += gup;
-          blue += bup;
-          if (red >= 255) {
-            rup = -10;
-            gup = 10;
-          }
-          if (red <= 0) {
-            rup = 0;
-          }
-          if (green >= 255) {
-            gup = -10;
-            bup = 10;
-          }
-          if (green <= 0) {
-            gup = 0;
-          }
-          if (blue >= 255) {
-            bup = -10;
-            rup = 10;
-          }
-          if (blue <= 0) {
-            bup = 0;
-          }
+        
           if (audioadded == 1) {
             audio.pause();
             audio.play();
@@ -139,34 +109,6 @@
           
         }
         if (by <= 5 && inzonet == 0) {
-          red += rup;
-          green += gup;
-          blue += bup;
-          if (red >= 255) {
-            rup = -10;
-            gup = 10;
-          }
-          if (red <= 0) {
-            rup = 0;
-          }
-          if (green >= 255) {
-            gup = -10;
-            bup = 10;
-          }
-          if (green <= 0) {
-            gup = 0;
-          }
-          if (blue >= 255) {
-            bup = -10;
-            rup = 10;
-          }
-          if (blue <= 0) {
-            bup = 0;
-          }
-          if (audioadded == 1) {
-            audio.pause();
-            audio.play();
-          }
           inzonet = 1;
           bv = 0 - bv;
         } else {
@@ -182,30 +124,7 @@
         bvx = 0 - bvx;
       }
       if (bx <= 5) {
-        red += rup;
-          green += gup;
-          blue += bup;
-          if (red >= 255) {
-            rup = -10;
-            gup = 10;
-          }
-          if (red <= 0) {
-            rup = 0;
-          }
-          if (green >= 255) {
-            gup = -10;
-            bup = 10;
-          }
-          if (green <= 0) {
-            gup = 0;
-          }
-          if (blue >= 255) {
-            bup = -10;
-            rup = 10;
-          }
-          if (blue <= 0) {
-            bup = 0;
-          }
+        
         if (audioadded == 1) {
           audio.pause();
             audio.play();
