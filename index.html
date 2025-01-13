@@ -139,7 +139,7 @@
             audio.pause();
             audio.play();
           }
-        bx = 390;
+        bx = 390 - size;
         bvx = 0 - bvx;
       }
       if (bx <= 5 + size) {
@@ -148,10 +148,10 @@
           audio.pause();
             audio.play();
           }
-        bx = 10;
+        bx = 10 + size;
         bvx = 0 - bvx;
       }
-      if (by >= 415) {
+      if (by >= 415 - size) {
         by = 395;
       }
       }
