@@ -1,1 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bouncy Ball</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <canvas id="Canvas" width="400" height="400"></canvas>
+    <h3>gravity: <span id="gravitynum">5</span></h3>
+    <input type="range" min="0" max="10" value="5" class="slider" id="Gravity">
+    <h3>friction: <span id="frictionnum">5</span></h3>
+    <input type="range" min="0" max="10" value="5" class="slider" id="Friction">
+    <button onclick="bounce()">bounce!</button>
+    <button onclick="pl()">push left</button>
+    <button onclick="pr()">push right</button>
+    <input type="file" id="fileInput" accept=".mp3">
+    <audio id="audio" controls="false"></audio>
+
+    <script>
+      
+      var c = document.getElementById("Canvas");
+      var ctx = c.getContext("2d");
+      // the x bosition of the ball
+      var bx = 200;
+      // the y position of the ball
+      var by = 200;
+      // the ball's y velocity
+      var bv = -1;
+      // the ball's x velocity
+      var bvx = 0;
+      // is the ball in the zone to bounce it?
+      let inzone = 0;
+      // is the ball in the zone to bounce on the top?
+      let inzonet = 0;
+      // has the audio been added for a sound effect?
+      let audioadded = 0;
+      // the gravity of the ball
+      var gravity = 5;
+      // the friction of the ball
+      var friction = 5;
+      // the size of the ball
+      var size = 3;
+      // the html element of the audio
+      var audio = document.getElementById("audio");
+      // the actual file for the audio
+      const fileInput = document.getElementById("fileInput");
+      // check if the audio has been added and change tha variable for it.
+      fileInput.addEventListener("change", event => {
+        const file = URL.createObjectURL(event.target.files[0]);
+        document.getElementById("audio").src = file;
+        audioadded = 1;
+      });
+      // the function for the "Bounce!" button
+      function bounce() {
+          bv = 6
+      }
+      // the function for the different "push" buttons
+      function pl() {
+        bvx += 8;
+      }
+      function pr() {
+        bvx -= 8;
+      }
+      // the function to be called every frame
+      function frame() {
+        // checks if the gravity slider has been changed and updates the variable for that
+          let gravslider = document.getElementById("Gravity");
+          gravslider.oninput = function() {
+              gravity = this.value;
+              document.getElementById("gravitynum").innerHTML = gravity;
+          }
+        // same as gravity slider, except changes the friction
+        let frictionslider = document.getElementById("Friction");
+          frictionslider.oninput = function() {
+              friction = this.value;
+              document.getElementById("frictionnum").innerHTML = friction;
+          }
+        
+          ctx.clearRect(0, 0, c.width, c.height);
+          ctx.beginPath();
+          
+          if (inzone == 0) {
+            bv -= 0.05 * gravity;
+          }
+          if (bv <= 0.2 * gravity && bv >= -0.2 * gravity && by >= 395) {
+            bv = 0;
+            by = 395;
+            if (bvx > 0) {
+              bvx -= 0.05 * friction;
+            }
+            if (bvx < 0) {
+              bvx += 0.05 * friction;
+            }
+          }
+          bx -= bvx;
+          by -= bv;
+          ctx.beginPath();
+          ctx.fillStyle = "rgb(0,0,0)";
+          ctx.arc(bx, by, size, 0, 2 * Math.PI);
+          ctx.fill();
+          ctx.stroke();
+          ctx.rect(0,0,400,400);
+          ctx.stroke();
+
+        
+        
+          if (audioadded == 1) {
+            audio.pause();
+            audio.play();
+          }
+        if (by >= 395 - size && inzone == 0) {
+          inzone = 1;
+          if (bv !== 0) {
+          bv = 0 - bv;
+          bv -= 0.5 * gravity;
+            if (bvx > 0) {
+              bvx -= 0.1 * friction;
+            }
+            if (bvx < 0) {
+              bvx += 0.1 * friction;
+            }
+          }
+          
+        } else {
+          inzone = 0;
+          
+        }
+        if (by <= 5 + size && inzonet == 0) {
+          inzonet = 1;
+          bv = 0 - bv;
+        } else {
+          inzonet = 0;
+          
+        }
+        if (bx >= 395 - size) {
+          if (audioadded == 1) {
+            audio.pause();
+            audio.play();
+          }
+        bx = 390 - size;
+        bvx = 0 - bvx;
+      }
+      if (bx <= 5 + size) {
+        
+        if (audioadded == 1) {
+          audio.pause();
+            audio.play();
+          }
+        bx = 10 + size;
+        bvx = 0 - bvx;
+      }
+      if (by >= 415 - size) {
+        by = 395;
+      }
+      }
+      
+      setInterval(() => {
+        frame();
+        frame();
+        frame();
+        frame();
+        frame();
+        frame();
+        frame();
+        frame();
+        frame();
+        frame();
+        frame();
+        frame();
+        frame();
+        frame();
+      }, "1");
+      
+    </script>
+  </body>
+</html>
 
