@@ -13,8 +13,6 @@
     <input type="range" min="0" max="10" value="5" class="slider" id="Gravity">
     <h3>friction: <span id="frictionnum">5</span></h3>
     <input type="range" min="0" max="10" value="5" class="slider" id="Friction">
-    <h3>size: <span id="sizenum">3</span></h3>
-    <input type="range" min="2" max="15" value="5" class="slider" id="Size">
     <button onclick="bounce()">bounce!</button>
     <button onclick="pl()">push left</button>
     <button onclick="pr()">push right</button>
@@ -80,12 +78,7 @@
               friction = this.value;
               document.getElementById("frictionnum").innerHTML = friction;
           }
-          // same as gravity slider, except changes the friction
-        let sizeslider = document.getElementById("Size");
-          sizeslider.oninput = function() {
-              size = this.value;
-              document.getElementById("sizenum").innerHTML = friction;
-          }
+        
           ctx.clearRect(0, 0, c.width, c.height);
           ctx.beginPath();
           
